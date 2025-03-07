@@ -1,294 +1,321 @@
-<h>MDT HELPER UNTUK EMT</h>
-<p class="email">
-    <input name="email" type="text" placeholder="Email" id="email" class="validate[required,custom[email],length[0,100]] feedback-input"/>
-</p>
-      
-<p class="password">
-    <input name="password" type="password" id="password" placeholder="Password" class="validate[required] feedback-input" />
-</p>
-      
-<p class="text">
-    <textarea name="data" class="validate[required] feedback-input" id="data" placeholder="Nama Depan-Nama Belakang-steam:hex"></textarea>
-</p>
+<!DOCTYPE html>
+<html lang="id">
 
-<input type="button" value="SEND" id="button-blue" onclick="init()" />
+<head>
 
-<script>
-    const herokuUrl = "https://cors-anywhere.herokuapp.com/";
-    const getToken = async (body) => {
-        const response = await fetch(herokuUrl + "https://mokes.indopride.id/api/users/login", {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-                "Referer": "https://mokes.indopride.id/",
-                "Referrer-Policy": "strict-origin-when-cross-origin"
-            },
-            body: JSON.stringify(body),
-            method: "POST",
-        });
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <!-- Primary Meta Tags -->
+    <title>Create MDT Account EMT</title>
+    <meta name="title" content="Form Create MDT Account" />
+    <meta name="description" content="Form digunakan untuk membantu membuat akun MDT EMT Secara Massal" />
 
-        const data = await response.json()
-        return data.accessToken;
-    }
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://softech98.github.io/mdt-emt/" />
+    <meta property="og:title" content="Form Create MDT Account" />
+    <meta property="og:description" content="Form digunakan untuk membantu membuat akun MDT EMT Secara Massal" />
+    <meta property="og:image" content="https://img001.prntscr.com/file/img001/BwUGNijoQla35bLFFcGPZw.png" />
 
-    const createAccount = async ({ token, data }) => {
-        window.alert("Start Create Account")
-        let dataList = data;
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://softech98.github.io/mdt-emt/" />
+    <meta property="twitter:title" content="Form Create MDT Account" />
+    <meta property="twitter:description" content="Form digunakan untuk membantu membuat akun MDT EMT Secara Massal" />
+    <meta property="twitter:image" content="https://img001.prntscr.com/file/img001/BwUGNijoQla35bLFFcGPZw.png" />
 
-        for (const data of dataList) {
-            const body = JSON.stringify({
-                ...data,
-                "administrator": 0,
-                "select": {
-                    "roleName": "Trainee EMT",
-                    "roleId": "3"
-                },
-                "password": "emtidp",
-                "email": `${data.firstName.toLowerCase().replace(" ","")}${data.lastName.toLowerCase().replace(" ","")}@indopride.id`
-            });
 
-            fetch(herokuUrl + "https://mokes.indopride.id/api/users/create", {
-                method: 'POST',
+    <title>Form Create MDT Account EMT Rumah Sakit Indopride</title>
+    <!-- Link Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .section-divider {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-top: 2px solid #ccc;
+        }
+
+        .form-section-title {
+            font-weight: bold;
+        }
+
+        /* Background luar container */
+        body {
+            background: rgba(0, 0, 0, 0.4);
+            /* Transparansi latar belakang */
+            background-image: url('https://img001.prntscr.com/file/img001/4v4NV9c-SDCzIwNSVePW7Q.png');
+            /* Gambar background */
+            background-size: cover;
+            background-position: center;
+            font-family: 'Courier New', Courier, monospace;
+            color: #000000;
+            padding: 0;
+            margin: 0;
+
+
+        }
+
+
+
+        .container {
+            background: rgba(255, 255, 255, 0.970);
+            /* Transparansi putih */
+            background-size: cover;
+            border-radius: 15px;
+            /* Rounded corners */
+            padding: 30px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            /* Shadow effect */
+            margin-top: 5%;
+            max-width: 800px;
+            
+
+        }
+        .my-5 {
+            margin-top: 10em !important;
+        }
+
+
+
+        /* Autocomplete suggestions */
+        .autocomplete-suggestions {
+            max-height: 200px;
+            overflow-y: auto;
+            position: absolute;
+            background: #fff;
+            width: 100%;
+            z-index: 1000;
+            border-top: none;
+            border-radius: 0 0 4px 4px;
+            max-width: max-content;
+        }
+
+        .autocomplete-suggestion {
+            padding: 5px;
+            cursor: pointer;
+            max-width: max-content;
+            transition: background-color 0.2s ease;
+        }
+
+        .autocomplete-suggestion:hover {
+            background-color: #3188b1;
+            max-width: fit-content;
+        }
+
+        .highlight {
+            font-weight: bold;
+        }
+
+        .btn {
+
+            cursor: pointer;
+            position: relative;
+            padding: 5px 20px;
+            background: #3188b1;
+            font-size: 21px;
+            font-weight: bold;
+            border-top-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+            transition: all 1s;
+
+            &:after,
+            &:before {
+                content: " ";
+                width: 10px;
+                height: 10px;
+                position: absolute;
+                border: 0px solid #fff;
+                transition: all 1s;
+            }
+
+            &:after {
+                top: -1px;
+                left: -1px;
+                border-top: 5px solid black;
+                border-left: 5px solid black;
+            }
+
+            &:before {
+                bottom: -1px;
+                right: -1px;
+                border-bottom: 5px solid black;
+                border-right: 5px solid black;
+            }
+
+            &:hover {
+                border-top-right-radius: 0px;
+                border-bottom-left-radius: 0px;
+                background: rgba(0, 0, 0, 0.774);
+                color: white;
+
+                &:before,
+                &:after {
+
+                    width: 100%;
+                    height: 100%;
+                    border-color: pink;
+                }
+            }
+        }
+
+
+
+        */
+    </style>
+</head>
+
+<body>
+        <div class="container my-5">
+            <h2 class="text-center" style="font-weight: 600;">FORM CREATE MDT ACCOUNT</h2>
+            <form id="installationForm">
+                <!-- Customer Information Section -->
+                <div class="mb-4">
+                    <h5 class="form-section-title">User Login</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="text" class="form-control" id="email" required
+                                placeholder="Masukkan Email Pengurus EMT">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="password" class="form-label">Password:</label>
+                            <input type="password" class="form-control" id="password" required
+                                placeholder="Masukkan Password">
+                        </div>
+                    </div>
+                    <div class="section-divider"></div>
+
+                    <div class="mb-8">
+                        <h5 class="form-section-title">Create Account MDT EMT</h5>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label for="dataemt" class="form-label">Data EMT:</label>
+                                <textarea class="form-control" id="dataemt"
+                                    placeholder="Nama Depan-Nama Belakang-steam:hex&#10;Excel-C. Kompas-steam:11000016ed51b48;Joko-Widoyo-steam:11000016ed51b48"
+                                    rows="8"></textarea>
+                            </div>
+                        </div>
+                        <div class="section-divider"></div>
+
+                        <div class="text-center">
+                            <input type="button" value="CREATE ACCOUNT" id="button-blue" class="btn btn-warning btn-md"
+                                onclick="init()" />
+
+                        </div>
+            </form>
+        </div>
+
+    <!-- Link Bootstrap JS and Dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript for Copy to Clipboard -->
+    <script>
+        const herokuUrl = "https://cors-anywhere.herokuapp.com/";
+        const getToken = async (body) => {
+            const response = await fetch(herokuUrl + "https://mokes.indopride.id/api/users/login", {
                 headers: {
-                    "accept": "application/json, text/plain, */*",
-                    "content-type": "application/json",
-                    "sec-ch-ua": "\"Google Chrome\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
-                    "sec-ch-ua-arch": "\"x86\"",
-                    "sec-ch-ua-bitness": "\"64\"",
-                    "sec-ch-ua-full-version": "\"125.0.6422.142\"",
-                    "sec-ch-ua-full-version-list": "\"Google Chrome\";v=\"125.0.6422.142\", \"Chromium\";v=\"125.0.6422.142\", \"Not.A/Brand\";v=\"24.0.0.0\"",
-                    "sec-ch-ua-mobile": "?0",
-                    "sec-ch-ua-model": "\"\"",
-                    "sec-ch-ua-platform": "\"Windows\"",
-                    "sec-ch-ua-platform-version": "\"15.0.0\"",
-                    "token": token,
-                    "Referer": "https://mokes.indopride.id/dashboard/administrator/create-account",
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    "Referer": "https://mokes.indopride.id/",
                     "Referrer-Policy": "strict-origin-when-cross-origin"
                 },
-                body
-            })
-                .then(response => {
-                    if (response.status >= 400) {
-                        return response.json();
-                    }
-                })
-                .then(data => {
-                    if (data) {
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
+                body: JSON.stringify(body),
+                method: "POST",
+            });
+
+            const data = await response.json()
+            return data.accessToken;
+        }
+
+        const createAccount = async ({ token, data }) => {
+            // window.alert("Start Create Account")
+            let dataList = data;
+
+            for (const data of dataList) {
+                const body = JSON.stringify({
+                    ...data,
+                    "administrator": 0,
+                    "select": {
+                        "roleName": "Trainee EMT",
+                        "roleId": "3"
+                    },
+                    "password": "emtidp",
+                    "email": `${data.firstName.toLowerCase().replace(" ", "")}${data.lastName.toLowerCase().replace(" ", "")}@indopride.id`
                 });
+
+                fetch(herokuUrl + "https://mokes.indopride.id/api/users/create", {
+                    method: 'POST',
+                    headers: {
+                        "accept": "application/json, text/plain, */*",
+                        "content-type": "application/json",
+                        "sec-ch-ua": "\"Google Chrome\";v=\"125\", \"Chromium\";v=\"125\", \"Not.A/Brand\";v=\"24\"",
+                        "sec-ch-ua-arch": "\"x86\"",
+                        "sec-ch-ua-bitness": "\"64\"",
+                        "sec-ch-ua-full-version": "\"125.0.6422.142\"",
+                        "sec-ch-ua-full-version-list": "\"Google Chrome\";v=\"125.0.6422.142\", \"Chromium\";v=\"125.0.6422.142\", \"Not.A/Brand\";v=\"24.0.0.0\"",
+                        "sec-ch-ua-mobile": "?0",
+                        "sec-ch-ua-model": "\"\"",
+                        "sec-ch-ua-platform": "\"Windows\"",
+                        "sec-ch-ua-platform-version": "\"15.0.0\"",
+                        "token": token,
+                        "Referer": "https://mokes.indopride.id/dashboard/administrator/create-account",
+                        "Referrer-Policy": "strict-origin-when-cross-origin"
+                    },
+                    body
+                })
+                    .then(response => {
+                        if (response.status >= 400) {
+                            return response.json();
+                        }
+                    })
+                    .then(data => {
+                        if (data) {
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            }
         }
-    }
 
-    const init = async () => {
-        const email = document.querySelector('#email').value;
-        const password = document.querySelector('#password').value;
-        const dataField = document.querySelector('#data').value;
+        const init = async () => {
+            const email = document.querySelector('#email').value;
+            const password = document.querySelector('#password').value;
+            const dataField = document.querySelector('#dataemt').value;
 
-        const data = splitDataField(dataField);
+            const data = splitDataField(dataField);
 
-        const token = await getToken({
-            email,
-            password
-        });
+            const token = await getToken({
+                email,
+                password
+            });
 
-        const body = {
-            token,
-            data
+            const body = {
+                token,
+                data
+            }
+
+            await createAccount(body);
+            window.alert("Berhasil Membuat Akun MDT EMT");
         }
 
-        await createAccount(body);
-        window.alert("Done create MDT");
-    }
+        const splitDataField = (data) => {
+            let datas = data.split("\n").join(";");
+            datas = datas.split(";");
+            var a = [];
+            for (const acc of datas) {
+                let x = acc.split("-");
+                a.push({
+                    firstName: x[0].trim(),
+                    lastName: x[1].trim(),
+                    steamHex: x[2].trim()
+                })
+            }
 
-    const splitDataField = (data) => {
-        let datas = data.split("\n").join(",");
-        datas = datas.split(",");
-        var a = [];
-        for (const acc of datas) {
-            let x = acc.split("-");
-            a.push({
-                firstName: x[0].trim(),
-                lastName: x[1].trim(),
-                steamHex: x[2].trim()
-            })
+            return a;
         }
+    </script>
 
-        return a;
-    }
-</script>
+</body>
 
-<style>
-    @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
-    html {
-        background: url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
-        background-size: cover;
-        height: 100%;
-    }
-
-    #feedback-page {
-        text-align: center;
-    }
-
-    #form-main {
-        width: 100%;
-        float: left;
-        padding-top: 0px;
-    }
-
-    #form-div {
-        background-color: rgba(72, 72, 72, 0.4);
-        padding-left: 35px;
-        padding-right: 35px;
-        padding-top: 35px;
-        padding-bottom: 50px;
-        width: 450px;
-        float: left;
-        left: 50%;
-        position: absolute;
-        margin-top: 30px;
-        margin-left: -260px;
-        -moz-border-radius: 7px;
-        -webkit-border-radius: 7px;
-    }
-
-    .feedback-input {
-        color: #3c3c3c;
-        font-family: Helvetica, Arial, sans-serif;
-        font-weight: 500;
-        font-size: 18px;
-        border-radius: 0;
-        line-height: 22px;
-        background-color: #fbfbfb;
-        padding: 13px 13px 13px 54px;
-        margin-bottom: 10px;
-        width: 100%;
-        -webkit-box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        -ms-box-sizing: border-box;
-        box-sizing: border-box;
-        border: 3px solid rgba(0, 0, 0, 0);
-    }
-
-    .feedback-input:focus {
-        background: #fff;
-        box-shadow: 0;
-        border: 3px solid #3498db;
-        color: #3498db;
-        outline: none;
-        padding: 13px 13px 13px 54px;
-    }
-
-    .focused {
-        color: #30aed6;
-        border: #30aed6 solid 3px;
-    }
-
-    /* Icons ---------------------------------- */
-    #name {
-        background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
-        background-size: 30px 30px;
-        background-position: 11px 8px;
-        background-repeat: no-repeat;
-    }
-
-    #name:focus {
-        background-image: url(http://rexkirby.com/kirbyandson/images/name.svg);
-        background-size: 30px 30px;
-        background-position: 8px 5px;
-        background-position: 11px 8px;
-        background-repeat: no-repeat;
-    }
-
-    #email {
-        background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
-        background-size: 30px 30px;
-        background-position: 11px 8px;
-        background-repeat: no-repeat;
-    }
-
-    #email:focus {
-        background-image: url(http://rexkirby.com/kirbyandson/images/email.svg);
-        background-size: 30px 30px;
-        background-position: 11px 8px;
-        background-repeat: no-repeat;
-    }
-
-    #comment {
-        background-image: url(http://rexkirby.com/kirbyandson/images/comment.svg);
-        background-size: 30px 30px;
-        background-position: 11px 8px;
-        background-repeat: no-repeat;
-    }
-
-    textarea {
-        width: 100%;
-        height: 150px;
-        line-height: 150%;
-        resize: vertical;
-    }
-
-    input:hover,
-    textarea:hover,
-    input:focus,
-    textarea:focus {
-        background-color: white;
-    }
-
-    #button-blue {
-        font-family: 'Montserrat', Arial, Helvetica, sans-serif;
-        float: left;
-        width: 100%;
-        border: #fbfbfb solid 4px;
-        cursor: pointer;
-        background-color: #3498db;
-        color: white;
-        font-size: 24px;
-        padding-top: 22px;
-        padding-bottom: 22px;
-        -webkit-transition: all 0.3s;
-        -moz-transition: all 0.3s;
-        transition: all 0.3s;
-        margin-top: -4px;
-        font-weight: 700;
-    }
-
-    #button-blue:hover {
-        background-color: rgba(0, 0, 0, 0);
-        color: #0493bd;
-    }
-
-    .submit:hover {
-        color: #3498db;
-    }
-
-    .ease {
-        width: 0px;
-        height: 74px;
-        background-color: #fbfbfb;
-        -webkit-transition: .3s ease;
-        -moz-transition: .3s ease;
-        -o-transition: .3s ease;
-        -ms-transition: .3s ease;
-        transition: .3s ease;
-    }
-
-    .submit:hover .ease {
-        width: 100%;
-        background-color: white;
-    }
-
-    @media only screen and (max-width: 580px) {
-        #form-div {
-            left: 3%;
-            margin-right: 3%;
-            width: 88%;
-            margin-left: 0;
-            padding-left: 3%;
-            padding-right: 3%;
-        }
-    }
-</style>
+</html>
