@@ -32,7 +32,7 @@
         .section-divider {
             margin-top: 20px;
             margin-bottom: 20px;
-            border-top: 2px solid #ccc;
+            border-top: 2px solid #4e4d4d;
         }
 
         .form-section-title {
@@ -43,10 +43,10 @@
         body {
             background: rgba(0, 0, 0, 0.4);
             /* Transparansi latar belakang */
-            background-image: url('https://img001.prntscr.com/file/img001/4v4NV9c-SDCzIwNSVePW7Q.png');
+            /* background-image: url('https://img001.prntscr.com/file/img001/4v4NV9c-SDCzIwNSVePW7Q.png'); */
             /* Gambar background */
-            background-size: cover;
-            background-position: center;
+            /* background-size: cover;
+            background-position: center; */
             font-family: 'Courier New', Courier, monospace;
             color: #000000;
             padding: 0;
@@ -56,11 +56,88 @@
         }
 
 
+        .slider-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .slider {
+            background-size: cover;
+            background-position: top;
+            padding: 0;
+            margin: 0;
+            /* width: 100%; */
+            height: 100%;
+            background-image: url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png'),
+                url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png');
+
+            animation: slide 30s infinite;
+
+        }
+
+        @keyframes slide {
+            0% {
+                background-image: url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png'),
+                    url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png');
+            }
+
+            10% {
+                background-image: url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png'), url('assets/image6.png'),
+                    url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png'), url('assets/image1.png');
+            }
+
+            20% {
+                background-image: url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png'), url('assets/image6.png'), url('assets/image7.png'),
+                    url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png'), url('assets/image1.png'), url('assets/image2.png');
+            }
+
+            30% {
+                background-image: url('assets/image4.png'), url('assets/image5.png'), url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png'),
+                    url('assets/image9.png'), url('assets/image10.png'), url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png');
+            }
+
+            40% {
+                background-image: url('assets/image5.png'), url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png'),
+                    url('assets/image10.png'), url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png');
+            }
+
+            50% {
+                background-image: url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png'),
+                    url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png');
+            }
+
+            60% {
+                background-image: url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png'), url('assets/image1.png'),
+                    url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png'), url('assets/image6.png');
+            }
+
+            70% {
+                background-image: url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png'), url('assets/image1.png'), url('assets/image2.png'),
+                    url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png'), url('assets/image6.png'), url('assets/image7.png');
+            }
+
+            80% {
+                background-image: url('assets/image9.png'), url('assets/image10.png'), url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png'),
+                    url('assets/image4.png'), url('assets/image5.png'), url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png');
+            }
+
+            90% {
+                background-image: url('assets/image10.png'), url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png'),
+                    url('assets/image5.png'), url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png');
+            }
+
+            100% {
+                background-image: url('assets/image1.png'), url('assets/image2.png'), url('assets/image3.png'), url('assets/image4.png'), url('assets/image5.png'),
+                    url('assets/image6.png'), url('assets/image7.png'), url('assets/image8.png'), url('assets/image9.png'), url('assets/image10.png');
+            }
+        }
 
         .container {
-            background: rgba(255, 255, 255, 0.970);
+            background: rgba(255, 255, 255, 0.750);
             /* Transparansi putih */
-            background-size: cover;
+            /* background-size: cover; */
             border-radius: 15px;
             /* Rounded corners */
             padding: 30px;
@@ -68,9 +145,10 @@
             /* Shadow effect */
             margin-top: 5%;
             max-width: 800px;
-            
+
 
         }
+
         .my-5 {
             margin-top: 10em !important;
         }
@@ -157,53 +235,52 @@
                 }
             }
         }
-
-
-
-        */
     </style>
 </head>
 
-<body>
-        <div class="container my-5">
-            <h2 class="text-center" style="font-weight: 600;">FORM CREATE MDT ACCOUNT</h2>
-            <form id="installationForm">
-                <!-- Customer Information Section -->
-                <div class="mb-4">
-                    <h5 class="form-section-title">User Login</h5>
+<body class="slider-container slider">
+
+    <div class="container my-5">
+        <h2 class="text-center" style="font-weight: 600;">FORM CREATE MDT ACCOUNT</h2>
+        <hr>
+        <form id="installationForm">
+            <!-- Customer Information Section -->
+            <div class="mb-4">
+                <h5 class="form-section-title">User Login</h5>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="text" class="form-control" id="email" required
+                            placeholder="Masukkan Email Pengurus EMT">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="password" class="form-label">Password:</label>
+                        <input type="password" class="form-control" id="password" required
+                            placeholder="Masukkan Password">
+                    </div>
+                </div>
+                <div class="section-divider"></div>
+
+                <div class="mb-8">
+                    <h5 class="form-section-title">Create Account MDT EMT</h5>
                     <div class="row">
-                        <div class="col-md-6">
-                            <label for="email" class="form-label">Email:</label>
-                            <input type="text" class="form-control" id="email" required
-                                placeholder="Masukkan Email Pengurus EMT">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="password" class="form-label">Password:</label>
-                            <input type="password" class="form-control" id="password" required
-                                placeholder="Masukkan Password">
+                        <div class="col-md-12">
+                            <label for="dataemt" class="form-label">Data EMT:</label>
+                            <textarea class="form-control" id="dataemt"
+                                placeholder="Nama Depan-Nama Belakang-steam:hex&#10;Excel-C. Kompas-steam:11000016ed51b48;Joko-Widoyo-steam:11000016ed51b48"
+                                rows="8" required></textarea>
                         </div>
                     </div>
                     <div class="section-divider"></div>
 
-                    <div class="mb-8">
-                        <h5 class="form-section-title">Create Account MDT EMT</h5>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <label for="dataemt" class="form-label">Data EMT:</label>
-                                <textarea class="form-control" id="dataemt"
-                                    placeholder="Nama Depan-Nama Belakang-steam:hex&#10;Excel-C. Kompas-steam:11000016ed51b48;Joko-Widoyo-steam:11000016ed51b48"
-                                    rows="8"></textarea>
-                            </div>
-                        </div>
-                        <div class="section-divider"></div>
+                    <div class="text-center">
+                        <input type="button" value="CREATE ACCOUNT" id="button-blue" class="btn btn-warning btn-md"
+                            onclick="init()" />
 
-                        <div class="text-center">
-                            <input type="button" value="CREATE ACCOUNT" id="button-blue" class="btn btn-warning btn-md"
-                                onclick="init()" />
+                    </div>
+        </form>
+    </div>
 
-                        </div>
-            </form>
-        </div>
 
     <!-- Link Bootstrap JS and Dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
